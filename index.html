@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise</title>
+
+<title>JALLAD BIRTHDAY LINKS</title>
+
+<meta name="description" content="JALLAD BIRTHDAY LINKS - Create and share beautiful birthday surprise links.">
+<meta name="keywords" content="JALLAD BIRTHDAY LINKS, JALLAD Birthday, Birthday Links, Birthday Surprise">
+<meta name="robots" content="index, follow">
 
 <style>
 *{box-sizing:border-box}
@@ -25,8 +30,6 @@ html,body{
     justify-content:center;
     align-items:center;
 }
-
-/* CREATOR */
 
 #creator{
     width:100%;
@@ -101,8 +104,6 @@ button:hover{
     font-size:15px;
 }
 
-/* POP */
-
 #pop{
     display:none;
     color:white;
@@ -112,8 +113,6 @@ button:hover{
     0 0 15px white,
     0 0 40px #ff1493;
 }
-
-/* BALLOONS */
 
 #balloons{
     position:absolute;
@@ -154,8 +153,6 @@ button:hover{
     100%{transform:translateY(-125vh) rotate(-8deg)}
 }
 
-/* PARTICLES */
-
 .particle{
     position:fixed;
     width:8px;
@@ -181,8 +178,6 @@ button:hover{
     }
 }
 
-/* SURPRISE */
-
 #surprise{
     display:none;
     padding:18px 32px;
@@ -196,8 +191,6 @@ button:hover{
     0 0 15px #ff69d9,
     0 0 40px #ff1493;
 }
-
-/* CAKE */
 
 #cakeScene{
     display:none;
@@ -312,8 +305,6 @@ button:hover{
     to{transform:rotate(-40deg) scale(1.18)}
 }
 
-/* BIRTHDAY */
-
 #birthday{
     display:none;
     color:#ff69d9;
@@ -338,8 +329,6 @@ button:hover{
     }
 }
 
-/* HEART */
-
 #heartBox{
     display:none;
     position:absolute;
@@ -363,8 +352,6 @@ button:hover{
     letter-spacing:1px;
     filter:url(#glow);
 }
-
-/* PARAGRAPH */
 
 #message{
     display:none;
@@ -433,8 +420,6 @@ button:hover{
 
 <div id="app">
 
-<!-- CREATOR SCREEN -->
-
 <div id="creator">
 
     <div class="title">
@@ -502,9 +487,6 @@ button:hover{
 
 </div>
 
-
-<!-- DIRECT BIRTHDAY MODE -->
-
 <div id="pop">
     POP POP 🎈
 </div>
@@ -542,9 +524,6 @@ button:hover{
 </div>
 
 <div id="birthday"></div>
-
-
-<!-- HEART -->
 
 <div id="heartBox">
 
@@ -601,9 +580,6 @@ button:hover{
 
 </div>
 
-
-<!-- MESSAGE -->
-
 <div id="message">
 
     <div id="messageTitle"></div>
@@ -614,10 +590,7 @@ button:hover{
 
 </div>
 
-
 <script>
-
-/* ELEMENTS */
 
 const creator =
 document.getElementById("creator");
@@ -673,12 +646,8 @@ document.getElementById("messageTitle");
 const messageText =
 document.getElementById("messageText");
 
-
 let birthdayName = "";
 let relationship = "";
-
-
-/* CHECK IF THIS IS A RECEIVER LINK */
 
 const params =
 new URLSearchParams(
@@ -690,7 +659,6 @@ params.get("name");
 
 const urlRelation =
 params.get("relation");
-
 
 if(urlName && urlRelation){
 
@@ -707,9 +675,6 @@ if(urlName && urlRelation){
 
 }
 
-
-/* CREATE LINK */
-
 createBtn.onclick =
 function(){
 
@@ -718,7 +683,6 @@ function(){
 
     const enteredRelation =
         relationInput.value;
-
 
     if(!enteredName){
 
@@ -729,7 +693,6 @@ function(){
         return;
     }
 
-
     if(!enteredRelation){
 
         alert(
@@ -739,11 +702,9 @@ function(){
         return;
     }
 
-
     const base =
         window.location.origin +
         window.location.pathname;
-
 
     const newLink =
         base +
@@ -756,16 +717,12 @@ function(){
             enteredRelation
         );
 
-
     generatedLink.innerText =
         newLink;
 
     linkBox.style.display =
         "block";
 };
-
-
-/* COPY */
 
 copyBtn.onclick =
 async function(){
@@ -799,14 +756,10 @@ async function(){
     }
 };
 
-
-/* START BIRTHDAY */
-
 function startBirthdayShow(){
 
     pop.style.display =
         "block";
-
 
     setTimeout(function(){
 
@@ -817,9 +770,6 @@ function startBirthdayShow(){
 
     },900);
 }
-
-
-/* BALLOONS */
 
 const colors = [
     "#ff1744",
@@ -833,7 +783,6 @@ const colors = [
     "#ff1493",
     "#00ffff"
 ];
-
 
 function createBalloons(){
 
@@ -867,7 +816,6 @@ function createBalloons(){
         balloon.style.height =
             48+Math.random()*45+"px";
 
-
         balloon.onclick =
         function(e){
 
@@ -877,10 +825,8 @@ function createBalloons(){
 
         };
 
-
         balloons.appendChild(balloon);
     }
-
 
     setTimeout(function(){
 
@@ -889,9 +835,6 @@ function createBalloons(){
 
     },5000);
 }
-
-
-/* POP SOUND */
 
 function popBalloon(balloon){
 
@@ -910,34 +853,28 @@ function popBalloon(balloon){
         const gain =
             audio.createGain();
 
-
         oscillator.type =
             "sawtooth";
-
 
         oscillator.frequency.setValueAtTime(
             180,
             audio.currentTime
         );
 
-
         oscillator.frequency.exponentialRampToValueAtTime(
             40,
             audio.currentTime+.12
         );
-
 
         gain.gain.setValueAtTime(
             .35,
             audio.currentTime
         );
 
-
         gain.gain.exponentialRampToValueAtTime(
             .001,
             audio.currentTime+.15
         );
-
 
         oscillator.connect(gain);
 
@@ -954,10 +891,8 @@ function popBalloon(balloon){
     }
     catch(e){}
 
-
     const rect =
         balloon.getBoundingClientRect();
-
 
     const x =
         rect.left +
@@ -967,7 +902,6 @@ function popBalloon(balloon){
         rect.top +
         rect.height/2;
 
-
     balloon.style.animation =
         "none";
 
@@ -976,7 +910,6 @@ function popBalloon(balloon){
 
     balloon.style.opacity =
         "0";
-
 
     for(let i=0;i<15;i++){
 
@@ -1005,7 +938,6 @@ function popBalloon(balloon){
             Math.random()*180-90
         );
 
-
         document.body.appendChild(p);
 
         setTimeout(
@@ -1014,15 +946,11 @@ function popBalloon(balloon){
         );
     }
 
-
     setTimeout(
         ()=>balloon.remove(),
         150
     );
 }
-
-
-/* SURPRISE */
 
 surprise.onclick =
 function(){
@@ -1036,27 +964,22 @@ function(){
     cakeScene.style.display =
         "flex";
 
-
     setTimeout(function(){
 
         flame.style.display =
             "none";
-
 
         setTimeout(function(){
 
             cakeScene.style.display =
                 "none";
 
-
             birthday.innerText =
                 "HAPPY BIRTHDAY " +
                 birthdayName.toUpperCase();
 
-
             birthday.style.display =
                 "block";
-
 
             setTimeout(function(){
 
@@ -1072,14 +995,10 @@ function(){
     },3000);
 };
 
-
-/* HEART */
-
 function showHeart(){
 
     const lowerName =
         birthdayName.toLowerCase();
-
 
     let text = "";
 
@@ -1092,14 +1011,11 @@ function showHeart(){
 
     }
 
-
     heartTextPath.textContent =
         text;
 
-
     heartBox.style.display =
         "flex";
-
 
     setTimeout(function(){
 
@@ -1111,7 +1027,6 @@ function showHeart(){
 
     },100);
 
-
     setTimeout(function(){
 
         heartBox.style.opacity =
@@ -1119,7 +1034,6 @@ function showHeart(){
 
         heartBox.style.transform =
             "scale(.7)";
-
 
         setTimeout(function(){
 
@@ -1133,14 +1047,10 @@ function showHeart(){
     },5000);
 }
 
-
-/* MESSAGE */
-
 function showMessage(){
 
     let title = "";
     let text = "";
-
 
     if(relationship === "boyfriend"){
 
@@ -1152,7 +1062,6 @@ function showMessage(){
             "Wishing you a very happy birthday filled with happiness, laughter and beautiful memories. May this new year of your life bring you success, peace and many amazing moments. Have a wonderful birthday and enjoy your special day! 🎂✨";
     }
 
-
     else if(relationship === "girlfriend"){
 
         title =
@@ -1162,7 +1071,6 @@ function showMessage(){
         text =
             "Wishing you a beautiful birthday filled with happiness, laughter and unforgettable memories. May every new day bring you wonderful opportunities, success and plenty of reasons to smile. Have an amazing birthday! 🎂✨";
     }
-
 
     else if(relationship === "bestfriend"){
 
@@ -1174,7 +1082,6 @@ function showMessage(){
             "Happy Birthday to an amazing best friend! Wishing you endless happiness, lots of laughter, great adventures and countless beautiful memories. May this year be one of your best years ever! 🎂🎉";
     }
 
-
     else if(relationship === "friend"){
 
         title =
@@ -1184,7 +1091,6 @@ function showMessage(){
         text =
             "Wishing you an amazing birthday filled with happiness, laughter and good memories. May the year ahead bring you success, exciting opportunities and many wonderful moments. Have an awesome birthday! 🎂🎉";
     }
-
 
     else if(relationship === "brother"){
 
@@ -1196,7 +1102,6 @@ function showMessage(){
             "Wishing you a fantastic birthday and an incredible year ahead. May you always stay happy, successful and keep achieving your goals. Enjoy every moment of your special day! 🎂🎉";
     }
 
-
     else if(relationship === "sister"){
 
         title =
@@ -1206,7 +1111,6 @@ function showMessage(){
         text =
             "Wishing you lots of happiness, laughter and beautiful memories on your special day. May the coming year bring you success, wonderful opportunities and countless reasons to smile. Have the best birthday ever! 🎂💕";
     }
-
 
     messageTitle.innerText =
         title;
